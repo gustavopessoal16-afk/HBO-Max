@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planos de assinatura | HBO Max</title>
+    <link rel="stylesheet" href="./aula8.css">
+</head>
+<body class="modo-mensal">
+    
+    <!-- Imagem + Título -->
+    <header class="cabecalho">
+        <img class="logo" src="hbo.png" alt="HBO Max">
+        <h1>ESCOLHA O MELHOR PLANO PARA VOCÊ</h1>
+    </header>
+
+    <!-- Botão dos Preços "Mensal" e "Anual Parcelado" -->
+    <div class="billing-toggle" aria-label="Escolha o tipo de plano">
+        <button type="button" class="billing-option active" data-plan="mensal" aria-pressed="true">
+            <span>Mensal</span>
+        </button>
+
+        <div class="annual-wrapper">
+            <span class="promo-tag">ECONOMIZE ATÉ 20%</span>
+            <button type="button" class="billing-option" data-plan="anual" aria-pressed="false">
+                <span>Anual Parcelado</span>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Plano "Básico com Anúncios" -->
+    <main class="planos">
+
+        <table class="plano-card">
+            <thead>
+                <tr>
+                    <th>Básico com Anúncios</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>
+                        <p> <img class="desktop-icon" src="img/desktop-pc.png" alt="Computador"> <strong> 2 dispositivos </strong> ao mesmo tempo</p>
+                        <p> <img class="resolution-icon" src="img/mostrar.png" alt="Resolução"> Resolução <strong> Full HD</strong> </p>
+
+                        <div class="plan-footer">
+                            <p class="plan-price-line"> <strong> <span class="plan-price" data-monthly="R$29,90" data-annual="12x R$22,90">R$29,90</span><span class="mensalidade">/mês</span> </strong> </p>
+                            <p class="total-anual" hidden>Preço total anual R$274,80</p>
+                            <a class="plan-button" href="https://auth.hbomax.com/create-account">Escolha seu plano</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Plano "Standard" -->
+        <table class="plano-card">
+            <thead>
+                <tr>
+                    <th>Standard</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>
+                        <p> <img class="desktop-icon" src="img/desktop-pc.png" alt="Computador"> <strong> 2 dispositivos </strong> ao mesmo tempo</p>
+                        <p> <img class="resolution-icon" src="img/mostrar.png" alt="Resolução"> Resolução <strong> Full HD</strong> </p>
+                        <p> <img class="download-icon" src="img/interface-de-usuario.png" alt="Download"> <strong> 30 downloads </strong> para curtir off-line</p>
+
+                        <div class="plan-footer">
+                            <p class="plan-price-line"> <strong> <span class="plan-price" data-monthly="R$44,90" data-annual="12x R$34,90">R$44,90</span><span class="mensalidade">/mês</span> </strong> </p>
+                            <p class="total-anual" hidden>Preço total anual R$418,80</p>
+                            <a class="plan-button" href="https://auth.hbomax.com/create-account">Escolha seu plano</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Plano "Platinum" -->
+        <table class="plano-card">
+            <thead>
+                <tr>
+                    <th>Platinum</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>
+                        <p> <img class="desktop-icon" src="img/desktop-pc.png" alt="Computador"> <strong> 4 dispositivos </strong> ao mesmo tempo</p>
+                        <p> <img class="resolution-icon" src="img/mostrar.png" alt="Resolução"> Resolução <strong> Full HD </strong> e <strong> 4K Ultra HD*</strong> </p>
+                        <p> <img class="audio-icon" src="img/fone-de-ouvido.png" alt="Fone de ouvido"> Áudio <strong> Dolby Atmos*</strong> </p>
+                        <p> <img class="download-icon" src="img/interface-de-usuario.png" alt="Download"> <strong> 100 </strong> downloads para curtir off-line</p>
+
+                        <div class="plan-footer">
+                            <p class="plan-price-line"> <strong> <span class="plan-price" data-monthly="R$55,90" data-annual="12x R$44,90">R$55,90</span><span class="mensalidade">/mês</span> </strong> </p>
+                            <p class="total-anual" hidden>Preço total anual R$538,80</p>
+                            <a class="plan-button" href="https://auth.hbomax.com/create-account">Escolha seu plano</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </main>
+
+    <!-- Descrição final -->
+    <footer class="observacoes">
+        <p> *Full HD, 4K Ultra HD e Dolby Atmos não estão disponíveis em todo o conteúdo de cada plano.
+        O conteúdo ao vivo nos planos Standard e Platinum pode conter anúncios. 
+        Downloads podem ter restrições em algumas categorias de conteúdo.
+        Saiba mais em: <a href="https://help.hbomax.com/br/Answer/Detail/000002547">help.hbomax.com/plans.</a></p>
+    </footer>
+
+    <!-- Script do botão de alternância de preços -->
+    <script>
+        // Atualiza todos os cartões quando o usuário escolhe uma modalidade.
+        const billingOptions = document.querySelectorAll('.billing-option');
+        const planCards = document.querySelectorAll('.plano-card');
+
+        billingOptions.forEach((button) => {
+            button.addEventListener('click', () => {
+                billingOptions.forEach((option) => {
+                    const isActive = option === button;
+                    option.classList.toggle('active', isActive);
+                    option.setAttribute('aria-pressed', String(isActive));
+                });
+
+                const isAnnual = button.dataset.plan === 'anual';
+                document.body.classList.toggle('modo-anual', isAnnual);
+                document.body.classList.toggle('modo-mensal', !isAnnual);
+
+                planCards.forEach((card) => {
+                    const price = card.querySelector('.plan-price');
+                    const annualTotal = card.querySelector('.total-anual');
+
+                    price.textContent = isAnnual ? price.dataset.annual : price.dataset.monthly;
+                    annualTotal.hidden = !isAnnual;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

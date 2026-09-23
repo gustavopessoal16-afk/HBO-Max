@@ -1,0 +1,46 @@
+/* Configuração base da página de referência de cores. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: auto;
+    background: #ffffff;
+}
+
+body {
+    padding: 16px;
+}
+
+h1 {
+    font-size: 42px;
+    margin: 24px 0;
+}
+
+/* Lista vertical com as cores usadas no projeto. */
+ul.paleta {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+}
+
+ul.paleta > li {
+    padding: 8px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.cor-ciano-acinzentado { background-color: #060909; color: #ffffff; }
+.cor-azul-acinzentado { background-color: #121417; color: #ffffff; }
+.cor-cinza-escuro { background-color: #1e2124; color: #ffffff; }
+.cor-cinza { background-color: #676e76; color: #ffffff; }
+.cor-cinza-claro { background-color: #c8c8c9; color: #ffffff; }
+.cor-branco-gelo { background-color: #f0f0f0; color: #1c1c1c; }
+.cor-azul { background-color: #085ccd; color: #ffffff; }
+.cor-azul-claro { background-color: #4892f3; color: #ffffff; }
